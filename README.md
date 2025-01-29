@@ -52,4 +52,4 @@ Your server will be running on `http://localhost:3000`.
 ## License
 This project is licensed under the **MIT License**.
 
-🚀 Built with ❤️ by [Victor Samuel]
+🚀 Built with ❤️ by Victor Samuel
