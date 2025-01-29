@@ -6,10 +6,11 @@ const app = express();
 dotenv.config();
 // Enable Cors (Allows public access)
 app.use(cors());
+app.use(express.json());
 
 app.get("/api/info", (req, res) => {
   res.json({
-    slack_email: process.env.EMAIL,
+    email: process.env.EMAIL,
     current_datetime: new Date().toISOString(),
     github_url: process.env.GITHUB_URL,
   });
@@ -17,6 +18,20 @@ app.get("/api/info", (req, res) => {
 
 app.get("/", (req, res) => {
   res.redirect("/api/info");
+});
+// handle 404
+app.use((req, res) => {
+  res.status(404).json({
+    error: "Not Found",
+    meessage: "The requested resource was not found.",
+  });
+});
+
+app.use((err, req, res, next) => {
+  res.status(500).json({
+    error: "Internal Server Error",
+    message: "Something went wrong, please try again later.",
+  });
 });
 
 // Define port
