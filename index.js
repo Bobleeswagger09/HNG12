@@ -9,7 +9,7 @@ app.use(cors());
 
 app.get("/api/info", (req, res) => {
   res.json({
-    slack_email: process.env.Email,
+    slack_email: process.env.EMAIL,
     current_datetime: new Date().toISOString(),
     github_url: process.env.GITHUB_URL,
   });
